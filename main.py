@@ -10,7 +10,11 @@ def main():
     word_count = get_word_count(book_contents)
     character_count = get_character_count(book_contents)
     letter_count = get_letter_count(character_count)
+    total_char_count = get_total_char_count(character_count)
+    total_letter_count = get_total_letter_count(letter_count)
     print(f"{word_count} words found in the document")
+    print(f"{total_letter_count} letters found in the document")
+    print(f"{total_char_count} characters found in the document")
     #print(character_count)
     #print(letter_count)
 
@@ -43,8 +47,14 @@ def get_letter_count(char_dict):
     chars_list.sort(reverse=True, key=get_sorted)
     return chars_list
 
+def get_total_char_count(char_dict):
+    return sum(char_dict.values())
 
-
+def get_total_letter_count(letter_list):
+    total = 0
+    for letter_dict in letter_list:
+        total += letter_dict["count"]
+    return total
 
 
 
